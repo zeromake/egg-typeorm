@@ -67,7 +67,9 @@ function watchEntity(app: Application) {
   const { baseDir } = app
   const entityDir = join(baseDir, 'app', 'entity')
   const typingsDir = join(baseDir, 'typings')
-  fs.ensureDirSync(entityDir)
+
+  if (!fs.existsSync(entityDir)) return
+
   fs.ensureDirSync(typingsDir)
   watch(entityDir).on('all', (eventType: string) => {
     if (['add', 'change'].includes(eventType)) {
@@ -99,6 +101,9 @@ function createTyingFile(app: Application) {
 function loadModel(app: Application) {
   const { baseDir } = app
   const entityDir = join(baseDir, 'app', 'entity')
+
+  if (!fs.existsSync(entityDir)) return
+
   const files = find(entityDir, { matching: '*.ts' })
   app.context.model = {}
 
@@ -116,7 +121,9 @@ function loadModel(app: Application) {
 export default async (app: Application) => {
   app.beforeStart(async () => {
     await connectDB(app)
-    watchEntity(app)
+    if (app.config.env === 'local') {
+      watchEntity(app)
+    }
     loadModel(app)
   })
 }
