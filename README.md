@@ -1,24 +1,15 @@
-# egg-@forsigner/egg-typeorm
+# egg-sequelize
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
-[![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
-[npm-image]: https://img.shields.io/npm/v/egg-@forsigner/egg-typeorm.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-@forsigner/egg-typeorm
-[travis-image]: https://img.shields.io/travis/eggjs/egg-@forsigner/egg-typeorm.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-@forsigner/egg-typeorm
-[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-@forsigner/egg-typeorm.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/eggjs/egg-@forsigner/egg-typeorm?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-@forsigner/egg-typeorm.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-@forsigner/egg-typeorm
-[snyk-image]: https://snyk.io/test/npm/egg-@forsigner/egg-typeorm/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-@forsigner/egg-typeorm
-[download-image]: https://img.shields.io/npm/dm/egg-@forsigner/egg-typeorm.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-@forsigner/egg-typeorm
+[npm-image]: https://img.shields.io/npm/v/@forsigner/egg-typeorm.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/@forsigner/egg-typeorm
+[travis-image]: https://img.shields.io/travis/forsigner/@forsigner/egg-typeorm.svg?style=flat-square
+[travis-url]: https://travis-ci.org/forsigner/@forsigner/egg-typeorm
+[download-image]: https://img.shields.io/npm/dm/@forsigner/egg-typeorm.svg?style=flat-square
+[download-url]: https://npmjs.org/package/@forsigner/egg-typeorm
 
 <!--
 Description here.
@@ -27,28 +18,40 @@ Description here.
 ## Install
 
 ```bash
-$ npm i egg-@forsigner/egg-typeorm --save
+$ yarn add @forsigner/egg-typeorm
 ```
 
 ## Usage
 
 ```js
-// {app_root}/config/plugin.js
-exports.@forsigner/eggTypeorm = {
-  enable: true,
-  package: 'egg-@forsigner/egg-typeorm',
-};
+// {app_root}/config/plugin.ts
+const plugin: EggPlugin = {
+  typeorm: {
+    enable: true,
+    package: '@forsigner/egg-typeorm',
+  },
+}
 ```
 
 ## Configuration
 
 ```js
-// {app_root}/config/config.default.js
-exports.@forsigner/eggTypeorm = {
-};
+// {app_root}/config/config.default.ts
+config.typeorm = {
+  type: 'mysql',
+  host: 'localhost',
+  port: 3306,
+  username: 'test',
+  password: 'test',
+  database: 'test',
+  synchronize: true,
+  logging: false,
+  entities: ['app/entity/**/*.ts'],
+  migrations: ['app/migration/**/*.ts'],
+  subscribers: ['app/subscriber/**/*.ts'],
+}
 ```
 
-see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Example
 
@@ -56,7 +59,7 @@ see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue [here](https://github.com/forsigner/egg-typeorm/issues).
 
 ## License
 
