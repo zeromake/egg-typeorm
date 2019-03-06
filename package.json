@@ -1,0 +1,56 @@
+{
+  "name": "@forsigner/egg-typeorm",
+  "version": "1.0.0",
+  "description": "typeorm for egg",
+  "eggPlugin": {
+    "name": "typeorm"
+  },
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin"
+  ],
+  "dependencies": {
+    "chokidar": "^2.1.2",
+    "fs-extra": "^7.0.1",
+    "fs-jetpack": "^2.2.2",
+    "prettier": "^1.16.4"
+  },
+  "devDependencies": {
+    "@types/chokidar": "^1.7.5",
+    "@types/fs-extra": "^5.0.5",
+    "@types/prettier": "^1.16.1",
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "egg": "^2.16.0",
+    "egg-bin": "^4.11.0",
+    "egg-ci": "^1.11.0",
+    "egg-mock": "^3.21.0",
+    "typescript": "^3.3.3333"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "tsc": "tsc -p tsconfig.json"
+  },
+  "files": [
+    "app.js",
+    "agent.js",
+    "config",
+    "app"
+  ],
+  "ci": {
+    "version": "8, 10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forsigner/forsigner/egg-typeorm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/forsigner/egg-typeorm/issues"
+  },
+  "homepage": "https://github.com/forsigner/egg-typeorm",
+  "author": "forsigner",
+  "license": "MIT"
+}
