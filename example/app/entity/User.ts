@@ -1,15 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
-export class User {
+class User {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   // @Column()
   // loginID: string
 
   @Column()
-  name: string
+  name: string;
 }
 
-export default User
+export default User;

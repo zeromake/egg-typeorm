@@ -54,11 +54,20 @@ config.typeorm = {
   migrations: ['app/migration/**/*.ts'],
   subscribers: ['app/subscriber/**/*.ts'],
 }
+
+// in controller
+export default class UserController extends Controller {
+  public async index() {
+    const { ctx } = this;
+    ctx.body = await ctx.model.User.find();
+  }
+}
+
 ```
 
 ## Example
 
-[example](example)
+[example](https://github.com/forsigner/egg-typeorm/tree/master/example)
 
 ## Questions & Suggestions
 
