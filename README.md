@@ -1,5 +1,9 @@
 # egg-sequelize
 
+[TypeORM](https://typeorm.io/#/) plugin for Egg.js.
+
+> NOTE: This plugin supports TypeScript only.
+
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![npm download][download-image]][download-url]
@@ -18,7 +22,7 @@ Description here.
 ## Install
 
 ```bash
-$ yarn add @forsigner/egg-typeorm
+$ yarn add @forsigner/egg-typeorm mysql
 ```
 
 ## Usage
@@ -52,10 +56,9 @@ config.typeorm = {
 }
 ```
 
-
 ## Example
 
-<!-- example here -->
+[example](example)
 
 ## Questions & Suggestions
 
