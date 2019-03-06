@@ -1,4 +1,4 @@
-# egg-sequelize
+# egg-typeorm
 
 [TypeORM](https://typeorm.io/#/) plugin for Egg.js.
 
