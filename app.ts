@@ -67,6 +67,7 @@ function watchEntity(app: Application) {
   const { baseDir } = app
   const entityDir = join(baseDir, 'app', 'entity')
   const typingsDir = join(baseDir, 'typings')
+  fs.ensureDirSync(entityDir)
   fs.ensureDirSync(typingsDir)
   watch(entityDir).on('all', (eventType: string) => {
     if (['add', 'change'].includes(eventType)) {
