@@ -27,13 +27,15 @@
     "egg-bin": "^4.11.0",
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
+    "standard-version": "^5.0.1",
     "typescript": "^3.3.3333"
   },
   "engines": {
     "node": ">=8.0.0"
   },
   "scripts": {
-    "tsc": "tsc -p tsconfig.json"
+    "tsc": "tsc -p tsconfig.json",
+    "release": "standard-version"
   },
   "files": [
     "app.js",
