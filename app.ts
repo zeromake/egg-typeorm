@@ -18,7 +18,8 @@ export function formatCode(text: string) {
 
 async function connectDB(app: Application) {
   const config = app.config.typeorm
-  await createConnection(config)
+  const connection = await createConnection(config)
+  app.context.connection = connection
 }
 
 function capitalizeFirstLetter(str: string) {
@@ -38,11 +39,12 @@ function writeTyping(path: string, text: string) {
 function getTypingText(importText: string, modelText: string) {
   const tpl = `
 import 'egg'
-import { Repository } from 'typeorm'
+import { Repository, Connection } from 'typeorm'
 ${importText}
 
 declare module 'egg' {
   interface Context {
+    connection: Connection
     model: {
       ${modelText}
     }
