@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.2.0](http://github.com/forsigner/forsigner/egg-typeorm/compare/v1.1.0...v1.2.0) (2019-03-07)
+
+
+### Features
+
+* check typeorm config ([45b091c](http://github.com/forsigner/forsigner/egg-typeorm/commit/45b091c))
+* support ctx.connection ([fce9f17](http://github.com/forsigner/forsigner/egg-typeorm/commit/fce9f17))
+* support ctx.entity ([b10cef0](http://github.com/forsigner/forsigner/egg-typeorm/commit/b10cef0))
+
+
+
 # [1.1.0](http://github.com/forsigner/forsigner/egg-typeorm/compare/v1.0.1...v1.1.0) (2019-03-06)
 
 
