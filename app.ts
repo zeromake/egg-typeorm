@@ -36,7 +36,11 @@ function writeTyping(path: string, text: string) {
   fs.writeFileSync(path, formatCode(text), { encoding: 'utf8' })
 }
 
-function getTypingText(importText: string, modelText: string) {
+function getTypingText(
+  importText: string,
+  modelText: string,
+  entityText: string,
+) {
   const tpl = `
 import 'egg'
 import { Repository, Connection } from 'typeorm'
@@ -45,6 +49,9 @@ ${importText}
 declare module 'egg' {
   interface Context {
     connection: Connection
+    entity: {
+      ${entityText}
+    }
     model: {
       ${modelText}
     }
@@ -96,11 +103,14 @@ function createTyingFile(app: Application) {
   const modelText = pathArr
     .map(i => `${i.name}: Repository<${i.name}>`)
     .join('\n')
-  const text = getTypingText(importText, modelText)
+
+  // TODO
+  const entityText = pathArr.map(i => `${i.name}: any`).join('\n')
+  const text = getTypingText(importText, modelText, entityText)
   writeTyping(typingPath, text)
 }
 
-function loadModel(app: Application) {
+async function loadEntityAndModel(app: Application) {
   const { baseDir } = app
   const entityDir = join(baseDir, 'app', 'entity')
 
@@ -108,12 +118,18 @@ function loadModel(app: Application) {
 
   const files = find(entityDir, { matching: '*.ts' })
   app.context.model = {}
+  app.context.entity = {}
 
   try {
     for (const file of files) {
-      const singleModel = require(join(baseDir, file)).default
+      const entity = require(join(baseDir, file)).default
+
+      console.log('-------------------------------')
+      console.log(entity.toString())
+      console.log(typeof entity)
       const name = getModelName(file)
-      app.context.model[name] = getRepository(singleModel)
+      app.context.model[name] = getRepository(entity)
+      app.context.entity[name] = entity
     }
   } catch (e) {
     console.log(e)
@@ -131,6 +147,6 @@ export default async (app: Application) => {
     if (app.config.env === 'local') {
       watchEntity(app)
     }
-    loadModel(app)
+    await loadEntityAndModel(app)
   })
 }
