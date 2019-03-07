@@ -121,6 +121,11 @@ function loadModel(app: Application) {
 }
 
 export default async (app: Application) => {
+  const config = app.config.typeorm
+  if (!config) {
+    throw new Error('please config typeorm in config file')
+  }
+
   app.beforeStart(async () => {
     await connectDB(app)
     if (app.config.env === 'local') {
