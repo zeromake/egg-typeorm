@@ -28,7 +28,7 @@ function capitalizeFirstLetter(str: string) {
 
 function getModelName(file: string) {
   const filename = file.split(sep).pop() || ''
-  const name = capitalizeFirstLetter(filename.replace(/\.ts$/, ''))
+  const name = capitalizeFirstLetter(filename.replace(/\.ts$|\.js$/g, ''))
   return name
 }
 
@@ -64,7 +64,7 @@ declare module 'egg' {
 function formatPaths(files: string[]) {
   return files.map(file => {
     const name = getModelName(file)
-    const importPath = `../${file}`.replace(/\.ts$/, '')
+    const importPath = `../${file}`.replace(/\.ts$|\.js$/g, '')
     return {
       name,
       importPath,
@@ -116,17 +116,18 @@ async function loadEntityAndModel(app: Application) {
 
   if (!fs.existsSync(entityDir)) return
 
-  const files = find(entityDir, { matching: '*.ts' })
+  // TODO: handle other env
+  const matching = app.config.env === 'local' ? '*.ts' : '*.js'
+
+  const files = find(entityDir, { matching })
   app.context.model = {}
   app.context.entity = {}
 
   try {
     for (const file of files) {
-      const entity = require(join(baseDir, file)).default
+      const entityPath = join(baseDir, file)
+      const entity = require(entityPath).default
 
-      console.log('-------------------------------')
-      console.log(entity.toString())
-      console.log(typeof entity)
       const name = getModelName(file)
       app.context.model[name] = getRepository(entity)
       app.context.entity[name] = entity
@@ -143,6 +144,7 @@ export default async (app: Application) => {
   }
 
   app.beforeStart(async () => {
+    app.logger.info('[egg-typeorm] app start.........')
     await connectDB(app)
     if (app.config.env === 'local') {
       watchEntity(app)
