@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.1](http://github.com/forsigner/forsigner/egg-typeorm/compare/v1.2.0...v1.2.1) (2019-03-08)
+
+
+### Bug Fixes
+
+* require js file if prod ([a0087bb](http://github.com/forsigner/forsigner/egg-typeorm/commit/a0087bb))
+
+
+
 # [1.2.0](http://github.com/forsigner/forsigner/egg-typeorm/compare/v1.1.0...v1.2.0) (2019-03-07)
 
 
