@@ -5,13 +5,10 @@
 > NOTE: This plugin supports TypeScript only.
 
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
 [![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/@forsigner/egg-typeorm.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/@forsigner/egg-typeorm
-[travis-image]: https://img.shields.io/travis/forsigner/@forsigner/egg-typeorm.svg?style=flat-square
-[travis-url]: https://travis-ci.org/forsigner/@forsigner/egg-typeorm
 [download-image]: https://img.shields.io/npm/dm/@forsigner/egg-typeorm.svg?style=flat-square
 [download-url]: https://npmjs.org/package/@forsigner/egg-typeorm
 
@@ -27,7 +24,9 @@ $ yarn add @forsigner/egg-typeorm mysql
 
 ## Usage
 
-```js
+### Plugin
+
+```ts
 // {app_root}/config/plugin.ts
 const plugin: EggPlugin = {
   typeorm: {
@@ -37,9 +36,9 @@ const plugin: EggPlugin = {
 }
 ```
 
-## Configuration
+### Configuration
 
-```js
+```ts
 // {app_root}/config/config.default.ts
 config.typeorm = {
   type: 'mysql',
@@ -54,15 +53,49 @@ config.typeorm = {
   migrations: ['app/migration/**/*.ts'],
   subscribers: ['app/subscriber/**/*.ts'],
 }
+```
 
+### Create entity files
+
+```bash
+├── controller
+│   ├── home.ts
+│   ├── report.ts
+│   └── test-result.ts
+├── entity
+    ├── Post.ts
+    └── User.ts
+```
+
+### Entity file
+
+```ts
+// app/entity/User.ts
+
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+
+@Entity()
+class User {
+  @PrimaryGeneratedColumn()
+  id: number
+
+  @Column()
+  name: string
+}
+
+export default User
+```
+
+### Invoke model
+
+```ts
 // in controller
 export default class UserController extends Controller {
   public async index() {
-    const { ctx } = this;
-    ctx.body = await ctx.model.User.find();
+    const { ctx } = this
+    ctx.body = await ctx.model.User.find()
   }
 }
-
 ```
 
 ## Example
