@@ -144,11 +144,14 @@ export default async (app: Application) => {
   }
 
   app.beforeStart(async () => {
-    app.logger.info('[egg-typeorm] app start.........')
-    await connectDB(app)
-    if (app.config.env === 'local') {
-      watchEntity(app)
+    try {
+      await connectDB(app)
+      // if (app.config.env === 'local') {
+        watchEntity(app)
+      // }
+      await loadEntityAndModel(app)
+    } catch (error) {
+      app.logger.info(JSON.stringify(error))
     }
-    await loadEntityAndModel(app)
   })
 }
