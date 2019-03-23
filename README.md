@@ -2,8 +2,6 @@
 
 [TypeORM](https://typeorm.io/#/) plugin for Egg.js.
 
-> NOTE: This plugin supports TypeScript only.
-
 [![NPM version][npm-image]][npm-url]
 [![npm download][download-image]][download-url]
 
@@ -59,9 +57,7 @@ config.typeorm = {
 
 ```bash
 ├── controller
-│   ├── home.ts
-│   ├── report.ts
-│   └── test-result.ts
+│   └── home.ts
 ├── entity
     ├── Post.ts
     └── User.ts
@@ -86,7 +82,7 @@ class User {
 export default User
 ```
 
-### Invoke model
+### Use with FindOptions
 
 ```ts
 // in controller
@@ -94,6 +90,21 @@ export default class UserController extends Controller {
   public async index() {
     const { ctx } = this
     ctx.body = await ctx.model.User.find()
+  }
+}
+```
+
+### Use with QueryBuilder
+
+```ts
+// in controller
+export default class UserController extends Controller {
+  public async index() {
+    const { ctx } = this
+    const firstUser = await ctx.model.User.createQueryBuilder('user')
+      .where('user.id = :id', { id: 1 })
+      .getOne()
+    ctx.body = firstUser
   }
 }
 ```

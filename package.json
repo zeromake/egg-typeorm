@@ -1,7 +1,7 @@
 {
   "name": "@forsigner/egg-typeorm",
   "version": "1.2.1",
-  "description": "typeorm for egg",
+  "description": "Typeorm for egg",
   "eggPlugin": {
     "name": "typeorm"
   },
