@@ -89,7 +89,7 @@ export default User
 export default class UserController extends Controller {
   public async index() {
     const { ctx } = this
-    ctx.body = await ctx.model.User.find()
+    ctx.body = await ctx.repo.User.find()
   }
 }
 ```
@@ -101,7 +101,7 @@ export default class UserController extends Controller {
 export default class UserController extends Controller {
   public async index() {
     const { ctx } = this
-    const firstUser = await ctx.model.User.createQueryBuilder('user')
+    const firstUser = await ctx.repo.User.createQueryBuilder('user')
       .where('user.id = :id', { id: 1 })
       .getOne()
     ctx.body = firstUser
