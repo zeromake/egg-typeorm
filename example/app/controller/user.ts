@@ -3,6 +3,6 @@ import { Controller } from 'egg';
 export default class UserController extends Controller {
   public async index() {
     const { ctx } = this;
-    ctx.body = await ctx.model.User.find();
+    ctx.body = await ctx.repo.User.find();
   }
 }

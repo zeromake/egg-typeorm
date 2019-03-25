@@ -7,18 +7,27 @@ export default (appInfo: EggAppInfo) => {
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1551875313892_8568';
 
+  const env = appInfo.env;
+  const postFix = env === 'local' ? '.ts' : '.js';
+  const { baseDir } = appInfo;
+
   config.typeorm = {
     type: 'mysql',
-    host: 'localhost',
+    host: 'test',
     port: 3306,
     username: 'test',
     password: 'test',
     database: 'test',
-    synchronize: true,
+    synchronize: false,
     logging: false,
-    entities: [ 'app/entity/**/*.ts' ],
-    migrations: [ 'app/migration/**/*.ts' ],
-    subscribers: [ 'app/subscriber/**/*.ts' ],
+    entities: [ baseDir + `/app/entity/**/*${postFix}` ],
+    migrations: [ baseDir + `/app/migration/**/*${postFix}` ],
+    subscribers: [ baseDir + `/app/subscriber/**/*${postFix}` ],
+    cli: {
+      entitiesDir: baseDir + '/app/entity',
+      migrationsDir: baseDir + '/app/migration',
+      subscribersDir: baseDir + '/app/subscriber',
+    },
   };
 
   // add your egg config in here
