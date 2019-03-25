@@ -38,7 +38,7 @@ function writeTyping(path: string, text: string) {
 
 function getTypingText(
   importText: string,
-  modelText: string,
+  repoText: string,
   entityText: string,
 ) {
   const tpl = `
@@ -52,8 +52,8 @@ declare module 'egg' {
     entity: {
       ${entityText}
     }
-    model: {
-      ${modelText}
+    repo: {
+      ${repoText}
     }
   }
 }
@@ -100,13 +100,13 @@ function createTyingFile(app: Application) {
   const importText = pathArr
     .map(i => `import ${i.name} from '${i.importPath}'`)
     .join('\n')
-  const modelText = pathArr
+  const repoText = pathArr
     .map(i => `${i.name}: Repository<${i.name}>`)
     .join('\n')
 
   // TODO
   const entityText = pathArr.map(i => `${i.name}: any`).join('\n')
-  const text = getTypingText(importText, modelText, entityText)
+  const text = getTypingText(importText, repoText, entityText)
   writeTyping(typingPath, text)
 }
 
@@ -120,7 +120,7 @@ async function loadEntityAndModel(app: Application) {
   const matching = app.config.env === 'local' ? '*.ts' : '*.js'
 
   const files = find(entityDir, { matching })
-  app.context.model = {}
+  app.context.repo = {}
   app.context.entity = {}
 
   try {
@@ -129,7 +129,7 @@ async function loadEntityAndModel(app: Application) {
       const entity = require(entityPath).default
 
       const name = getModelName(file)
-      app.context.model[name] = getRepository(entity)
+      app.context.repo[name] = getRepository(entity)
       app.context.entity[name] = entity
     }
   } catch (e) {
