@@ -8,4 +8,4 @@ run/
 *.swp
 
 .history/
-app.js
+*.js

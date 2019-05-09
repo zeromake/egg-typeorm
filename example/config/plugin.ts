@@ -9,7 +9,7 @@ const plugin: EggPlugin = {
 
   typeorm: {
     enable: true,
-    package: '@forsigner/egg-typeorm',
+    package: '../../',
   },
 };
 

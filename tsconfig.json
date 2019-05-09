@@ -3,6 +3,7 @@
   "compilerOptions": {
     "target": "es2017",
     "module": "commonjs",
+    "outDir": "./",
     "strict": true,
     "noImplicitAny": false,
     "experimentalDecorators": true,
@@ -23,5 +24,6 @@
     "esModuleInterop": true,
     "importHelpers": true
   },
-  "exclude": ["app/public", "app/views", "node_modules*"]
+  "exclude": ["app/public", "app/views", "node_modules*"],
+  "files": ["app.ts", "src/cli.ts", "index.d.ts"]
 }

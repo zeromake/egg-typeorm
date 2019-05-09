@@ -12,21 +12,23 @@ export default (appInfo: EggAppInfo) => {
   const { baseDir } = appInfo;
 
   config.typeorm = {
-    type: 'mysql',
-    host: 'test',
-    port: 3306,
-    username: 'test',
-    password: 'test',
-    database: 'test',
-    synchronize: false,
-    logging: false,
-    entities: [ baseDir + `/app/entity/**/*${postFix}` ],
-    migrations: [ baseDir + `/app/migration/**/*${postFix}` ],
-    subscribers: [ baseDir + `/app/subscriber/**/*${postFix}` ],
-    cli: {
-      entitiesDir: baseDir + '/app/entity',
-      migrationsDir: baseDir + '/app/migration',
-      subscribersDir: baseDir + '/app/subscriber',
+    connection: {
+      type: 'mysql',
+      host: 'test',
+      port: 3306,
+      username: 'test',
+      password: 'test',
+      database: 'test',
+      synchronize: false,
+      logging: false,
+      entities: [ baseDir + `/app/entity/**/*${postFix}` ],
+      migrations: [ baseDir + `/app/migration/**/*${postFix}` ],
+      subscribers: [ baseDir + `/app/subscriber/**/*${postFix}` ],
+      cli: {
+        entitiesDir: baseDir + '/app/entity',
+        migrationsDir: baseDir + '/app/migration',
+        subscribersDir: baseDir + '/app/subscriber',
+      },
     },
   };
 

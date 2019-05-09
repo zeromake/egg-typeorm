@@ -1,6 +1,8 @@
 {
-  "name": "@forsigner/egg-typeorm",
-  "version": "1.3.0",
+  "name": "@zeromake/egg-typeorm",
+  "version": "1.4.0",
+  "types": "index.d.ts",
+  "main": "app.js",
   "description": "Typeorm for egg",
   "eggPlugin": {
     "name": "typeorm"
@@ -11,24 +13,24 @@
     "egg-plugin"
   ],
   "dependencies": {
-    "chokidar": "^2.1.2",
+    "chokidar": "^3.0.0",
     "fs-extra": "^7.0.1",
     "fs-jetpack": "^2.2.2",
-    "prettier": "^1.16.4",
-    "typeorm": "^0.2.14"
+    "prettier": "^1.17.0",
+    "typeorm": "^0.2.17"
   },
   "devDependencies": {
-    "@types/chokidar": "^1.7.5",
-    "@types/fs-extra": "^5.0.5",
-    "@types/prettier": "^1.16.1",
-    "autod": "^3.0.1",
+    "@types/chokidar": "^2.1.3",
+    "@types/fs-extra": "^5.1.0",
+    "@types/prettier": "^1.16.3",
+    "autod": "^3.1.0",
     "autod-egg": "^1.1.0",
-    "egg": "^2.16.0",
-    "egg-bin": "^4.11.0",
-    "egg-ci": "^1.11.0",
-    "egg-mock": "^3.21.0",
-    "standard-version": "^5.0.1",
-    "typescript": "^3.3.3333"
+    "egg": "^2.22.2",
+    "egg-bin": "^4.13.0",
+    "egg-ci": "^1.12.0",
+    "egg-mock": "^3.22.4",
+    "standard-version": "^6.0.1",
+    "typescript": "^3.4.5"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -38,22 +40,25 @@
     "release": "standard-version"
   },
   "files": [
+    "src/",
     "app.js",
-    "agent.js",
-    "config",
-    "app"
+    "app.ts",
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "ci": {
     "version": "8, 10"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/forsigner/forsigner/egg-typeorm.git"
+    "url": "git+https://github.com/zeromake/egg-typeorm.git"
   },
   "bugs": {
-    "url": "https://github.com/forsigner/egg-typeorm/issues"
+    "url": "https://github.com/zeromake/egg-typeorm/issues"
   },
-  "homepage": "https://github.com/forsigner/egg-typeorm",
-  "author": "forsigner",
+  "homepage": "https://github.com/zeromake/egg-typeorm",
+  "author": "zeromake<a390720046@gmail.com>",
   "license": "MIT"
 }
