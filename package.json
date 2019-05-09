@@ -1,6 +1,6 @@
 {
   "name": "@zeromake/egg-typeorm",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "types": "index.d.ts",
   "main": "app.js",
   "description": "Typeorm for egg",
@@ -44,6 +44,7 @@
     "app.js",
     "app.ts",
     "package.json",
+    "index.d.ts",
     "README.md",
     "LICENSE",
     "CHANGELOG.md"
