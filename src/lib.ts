@@ -31,7 +31,7 @@ export function createTyingFile(app: IConfig) {
     .join("\n");
 
   // TODO
-  const entityText = pathArr.map(i => `${i.name}: ${i.name}`).join("\n");
+  const entityText = pathArr.map(i => `${i.name}: typeof ${i.name}`).join("\n");
   const text = getTypingText(importText, repoText, entityText);
   writeTyping(typingPath, text);
 }
