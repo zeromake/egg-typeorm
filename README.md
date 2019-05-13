@@ -132,5 +132,8 @@ Please open an issue [here](https://github.com/zeromake/egg-typeorm/issues).
 
 ## Todo
 
-- [ ] cli generate `typeorm.d.ts` and `ormconfig.ts`
-- [ ] support for multiple connections
+- [ ] cli generate `typeorm.d.ts`.
+- [ ] cli generate `ormconfig.ts` or `ormconfig.js`.
+- [ ] cli generate tshelper generator config `tshelper.js` or `package.json`.
+- [ ] support for multiple connections.
+- [ ] inject into [egg-ts-helper](https://github.com/whxaxes/egg-ts-helper) generator.

@@ -31,7 +31,7 @@ export function createTyingFile(app: IConfig) {
     .join("\n");
 
   // TODO
-  const entityText = pathArr.map(i => `${i.name}: typeof ${i.name}`).join("\n");
+  const entityText = pathArr.map(i => `${i.name}: ObjectType<${i.name}>`).join("\n");
   const text = getTypingText(importText, repoText, entityText);
   writeTyping(typingPath, text);
 }
@@ -68,7 +68,7 @@ export function getTypingText(
 ) {
   const tpl = `
 import 'egg'
-import { Repository, Connection } from 'typeorm'
+import { Repository, Connection, ObjectType } from 'typeorm'
 ${importText}
 
 declare module 'egg' {
