@@ -3,7 +3,7 @@ import { find } from 'fs-jetpack'
 import { Application } from 'egg'
 import fs from "fs-extra";
 import { watch } from "chokidar";
-import { createConnection, getRepository } from 'typeorm'
+import { createConnection, getRepository, getConnectionManager, Connection, getConnection } from 'typeorm'
 import { getModelName, createTyingFile } from './src/lib'
 
 
@@ -32,8 +32,13 @@ export function watchEntity(app: Application) {
 
 async function connectDB(app: Application) {
   const config = app.config.typeorm
-  const connection = await createConnection(config.connection)
-  app.logger.debug(`typeorm conn ${config.connection.type}:${config.connection.database}`)
+  let connection: Connection = null as any;
+  if(getConnectionManager().has("default")) {
+    connection = getConnection("default")
+  } else {
+    connection = await createConnection(config.connection)
+    app.logger.debug(`typeorm conn ${config.connection.type}:${config.connection.database}`)
+  }
   app.context.connection = connection
 }
 
