@@ -1,6 +1,6 @@
 {
   "name": "@zeromake/egg-typeorm",
-  "version": "1.4.3",
+  "version": "1.4.5",
   "types": "index.d.ts",
   "main": "app.js",
   "description": "Typeorm for egg",
@@ -16,15 +16,11 @@
     "chokidar": "^3.0.0",
     "fs-extra": "^7.0.1",
     "fs-jetpack": "^2.2.2",
-    "prettier": "^1.17.0",
     "typeorm": "^0.2.17"
   },
   "devDependencies": {
     "@types/chokidar": "^2.1.3",
     "@types/fs-extra": "^5.1.0",
-    "@types/prettier": "^1.16.3",
-    "autod": "^3.1.0",
-    "autod-egg": "^1.1.0",
     "egg": "^2.22.2",
     "egg-bin": "^4.13.0",
     "egg-ci": "^1.12.0",
@@ -36,13 +32,11 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "tsc": "tsc -p tsconfig.json",
     "release": "standard-version"
   },
   "files": [
     "src/",
     "app.js",
-    "app.ts",
     "package.json",
     "index.d.ts",
     "README.md",

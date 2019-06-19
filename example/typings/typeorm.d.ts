@@ -1,15 +1,15 @@
-import 'egg'
-import { Repository, Connection } from 'typeorm'
-import User from '../app/entity/User'
+import 'egg';
+import { Repository, Connection } from 'typeorm';
+import User from '../app/entity/User';
 
 declare module 'egg' {
-  interface Context {
-    connection: Connection
-    entity: {
-      User: any
+    interface Context {
+        connection: Connection
+        entity: {
+            User: typeof User
+        }
+        repo: {
+            User: Repository<User>
+        }
     }
-    repo: {
-      User: Repository<User>
-    }
-  }
 }

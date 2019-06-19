@@ -13,13 +13,9 @@ export default (appInfo: EggAppInfo) => {
 
   config.typeorm = {
     connection: {
-      type: 'mysql',
-      host: 'test',
-      port: 3306,
-      username: 'test',
-      password: 'test',
-      database: 'test',
-      synchronize: false,
+      type: 'sqlite',
+      database: ':memory:',
+      synchronize: true,
       logging: false,
       entities: [ baseDir + `/app/entity/**/*${postFix}` ],
       migrations: [ baseDir + `/app/migration/**/*${postFix}` ],
@@ -30,6 +26,7 @@ export default (appInfo: EggAppInfo) => {
         subscribersDir: baseDir + '/app/subscriber',
       },
     },
+    watch: true,
   };
 
   // add your egg config in here

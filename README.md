@@ -132,6 +132,8 @@ Please open an issue [here](https://github.com/zeromake/egg-typeorm/issues).
 
 ## Todo
 
+- [x] plugin change to javascript.
+- [x] use egg new hook.
 - [ ] cli generate `ormconfig.ts` or `ormconfig.js`.
 - [ ] cli generate tshelper generator config `tshelper.js` or `package.json`.
 - [ ] support for multiple connections.
